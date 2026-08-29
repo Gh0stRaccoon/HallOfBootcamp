@@ -1,0 +1,89 @@
+@baseUrl = http://localhost:3000
+
+### Health
+GET {{baseUrl}}/health
+
+### API root
+GET {{baseUrl}}/api
+
+### List users
+GET {{baseUrl}}/api/users
+
+### List cohorts
+GET {{baseUrl}}/api/cohorts
+
+### Create cohort
+# @name createCohort
+POST {{baseUrl}}/api/cohorts
+Content-Type: application/json
+
+{
+  "name": "Cohort REST Test",
+  "slug": "cohort-rest-test-{{$timestamp}}",
+  "startDate": "2026-09-01T00:00:00.000Z",
+  "endDate": "2026-12-15T00:00:00.000Z"
+}
+
+@createdCohortId = {{createCohort.response.body.$.id}}
+
+### Create user
+# @name createUser
+POST {{baseUrl}}/api/users
+Content-Type: application/json
+
+{
+  "name": "REST User {{$timestamp}}",
+  "email": "rest-user-{{$timestamp}}@example.com",
+  "role": "Developer",
+  "bio": "Usuario creado desde REST Client para validación del backend.",
+  "avatarUrl": "https://example.com/avatar-{{$timestamp}}.png",
+  "linkedInUrl": "https://linkedin.com/in/rest-user-{{$timestamp}}",
+  "githubUrl": "https://github.com/rest-user-{{$timestamp}}"
+}
+
+@createdUserId = {{createUser.response.body.$.id}}
+
+### Duplicate user should fail
+POST {{baseUrl}}/api/users
+Content-Type: application/json
+
+{
+  "name": "REST User Duplicate",
+  "email": "{{createUser.request.body.$.email}}",
+  "role": "Developer",
+  "bio": "Intento de duplicado para validar regla de negocio.",
+  "avatarUrl": "https://example.com/duplicate.png",
+  "linkedInUrl": "https://linkedin.com/in/duplicate-rest-user",
+  "githubUrl": "https://github.com/duplicate-rest-user"
+}
+
+### Create participant
+# @name createParticipant
+POST {{baseUrl}}/api/participants
+Content-Type: application/json
+
+{
+  "userId": {{createdUserId}},
+  "cohortId": {{createdCohortId}},
+  "status": "active",
+  "joinedAt": "2026-08-28T12:00:00.000Z"
+}
+
+### List participants
+GET {{baseUrl}}/api/participants
+
+### Create contribution
+# @name createContribution
+POST {{baseUrl}}/api/contributions
+Content-Type: application/json
+
+{
+  "userId": {{createdUserId}},
+  "cohortId": {{createdCohortId}},
+  "projectContext": "Hall Of Bootcamp REST validation",
+  "type": "feature",
+  "description": "Contribución creada desde REST Client para validar el flujo completo de la API."
+}
+
+### List contributions
+GET {{baseUrl}}/api/contributions
