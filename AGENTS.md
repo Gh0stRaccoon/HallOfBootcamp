@@ -18,3 +18,19 @@ For every non-trivial change:
 - Never commit secrets; use environment variables for credentials and signing keys.
 - Prefer small, testable modules and explicit validation at API boundaries.
 
+## Branch naming convention
+
+Use the branch format defined in [BRANCHING.md](BRANCHING.md):
+
+```text
+<type>/HC-<issue-number>-<usuario>-<descripcion-corta>
+```
+
+Examples:
+
+```text
+feature/HC-12-juan-user-profile
+fix/HC-27-maria-linkedin-validation
+hotfix/HC-41-carlos-auth-token-expiration
+```
+
