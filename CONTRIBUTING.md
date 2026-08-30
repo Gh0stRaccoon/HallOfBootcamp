@@ -66,13 +66,28 @@ Tipos sugeridos:
 
 ## 4. Validación antes de enviar cambios
 
-Ejecuta siempre la validación del proyecto antes de abrir un PR.
+Aplica la validación relevante al cambio antes de abrir un PR. Para cambios de esquema, recrea una base local desechable con:
 
 ```bash
-npm run test:clean
+npm run db:reset
 ```
 
-También puedes probarla manualmente con REST Client en la carpeta [RESTClient/hallofbootcamp.http](RESTClient/hallofbootcamp.http).
+> `db:reset` elimina la base de desarrollo configurada antes de recrearla y aplicar las migraciones.
+
+También puedes probar manualmente el contrato HTTP con REST Client en [RESTClient/hallofbootcamp.http](RESTClient/hallofbootcamp.http).
+
+## 4.1 Contrato de la API y documentación
+
+Este proyecto mantiene un contrato de API documentado en [RESTClient/hallofbootcamp.http](RESTClient/hallofbootcamp.http). Cualquier cambio que afecte a endpoints, métodos HTTP, payloads, validaciones, respuestas o comportamiento observable de la API debe ir acompañado de la actualización de este documento.
+
+Regla obligatoria:
+
+- si cambias un endpoint, actualiza la colección o ejemplo correspondiente
+- si cambias el payload de entrada, actualiza la request de ejemplo
+- si cambias la estructura de salida, actualiza el ejemplo de respuesta y/o documentación
+- si agregas o eliminas validaciones, documenta el nuevo comportamiento
+
+Esto aplica aunque la API pueda probarse con Postman, Insomnia o curl. El repositorio considera la colección REST Client como la referencia de uso y validación del contrato de la API.
 
 ## 5. Preparación local
 
