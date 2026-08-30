@@ -18,23 +18,55 @@ Cada cambio debe estar asociado a una issue del repositorio. Usa un título clar
 
 ### 2.2 Crear una rama
 
-Usa la convención de ramas definida en [BRANCHING.md](BRANCHING.md):
+La regla oficial del proyecto es la siguiente, y debe respetarse en todo PR y en todo trabajo colaborativo.
+
+#### Requerimientos
+
+- cada rama debe nacer desde una issue de GitHub
+- cada rama debe estar ligada a un cambio concreto y acotado
+- debe usarse un nombre corto, claro y trazable
+- todo cambio debe abrirse mediante pull request
+- no se hace push directo a `main`
+
+#### Formato
 
 ```text
-<type>/HC-<issue-number>-<usuario>-<descripcion-corta>
+<type>/<issue-number>-<descripcion-corta>
 ```
 
-Ejemplo:
+Ejemplos:
 
 ```bash
-git checkout -b feature/HC-12-juan-user-profile
+git checkout -b feature/12-user-profile
+git checkout -b fix/27-linkedin-validation
+git checkout -b docs/09-branching-guidelines
 ```
+
+#### Tipos permitidos
+
+- `feature`: nueva funcionalidad
+- `fix`: corrección de errores
+- `docs`: documentación
+- `refactor`: mejora interna sin cambio de comportamiento visible
+- `chore`: mantenimiento o configuración
+- `test`: pruebas o validación
+
+#### Reglas obligatorias
+
+- todo en minúsculas
+- usar kebab-case en la descripción
+- sin espacios, acentos ni caracteres especiales
+- usar el número real de la issue
+- mantener la rama enfocada en una sola tarea
+
+> En proyectos open source, una convención clara de ramas reduce ruido, hace más fácil revisar contribuciones y evita que varias personas mezclen trabajo en una sola rama.
 
 ### 2.3 Trabajar en la rama
 
 - Mantén el cambio enfocado.
 - Haz cambios pequeños y revisables.
 - Si el trabajo es no trivial, crea o actualiza la especificación y el plan siguiendo el flujo SDD.
+- Antes de abrir un PR, aplica la validación relevante al cambio. Para cambios de esquema en una base local desechable, usa `npm run db:reset`.
 
 ## 3. Convención de commits
 
@@ -98,22 +130,41 @@ Esto aplica aunque la API pueda probarse con Postman, Insomnia o curl. El reposi
 npm install
 ```
 
-3. Configura el archivo `.env` con tus credenciales de PostgreSQL.
-4. Crea la base local con el script disponible en [scripts/create-local-db.sh](scripts/create-local-db.sh).
-5. Ejecuta la validación limpia:
+3. Configura tu archivo `.env` con tus credenciales de PostgreSQL:
+
+```env
+DB_NAME=hallofbootcamp
+DB_USER=admin
+DB_PASSWORD=admin123
+DB_HOST=localhost
+DB_PORT=5432
+PORT=3000
+```
+
+4. Crea o reinicia la base local con el flujo oficial del proyecto:
 
 ```bash
-npm run test:clean
+npm run db:reset
 ```
+
+5. Si necesitas recrear el esquema local, ejecuta el único flujo de base de datos:
+
+```bash
+npm run db:reset
+```
+
+Este comando no agrega datos de ejemplo.
 
 ## 6. Pull requests
 
 Antes de abrir un PR:
 
-- asegúrate de que la validación pase
+- asegúrate de que la validación relevante al cambio pase
 - escribe un resumen claro del cambio
 - referencia la issue relacionada
 - mantén el PR pequeño y enfocado
+
+Usa la plantilla oficial del repositorio en [.github/pull_request_template.md](.github/pull_request_template.md).
 
 ## 7. Buenas prácticas del equipo
 
