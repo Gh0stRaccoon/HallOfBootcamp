@@ -2,13 +2,16 @@
 
 ## Spec-driven workflow
 
+`openspec/` is the repository's sole specification and planning memory.
+
 For every non-trivial change:
 
-1. Create `specs/<feature-name>/spec.md` from `specs/templates/spec-template.md`.
-2. Agree on the user-visible behavior and acceptance criteria before implementation.
-3. Create `plan.md` from `specs/templates/plan-template.md` when the work spans multiple files, data changes, or API changes.
-4. Implement and verify every acceptance criterion.
-5. Keep the spec updated when the agreed scope changes.
+1. Create or continue `openspec/changes/<change-name>/` and record the proposal in `proposal.md`.
+2. Agree on user-visible behavior and acceptance criteria before implementation.
+3. Write the change delta in `openspec/changes/<change-name>/specs/<domain>/spec.md`, and keep the canonical specification in `openspec/specs/<domain>/spec.md` as the source of truth.
+4. For work spanning multiple files, data changes, or API changes, document the approach in `design.md` and executable work in `tasks.md`.
+5. Implement and verify every acceptance criterion; keep `state.yaml`, `tasks.md`, and `verify-report.md` current.
+6. Archive completed changes only after their delta has been merged into the canonical specification.
 
 ## Project conventions
 

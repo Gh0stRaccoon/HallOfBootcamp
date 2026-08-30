@@ -1,0 +1,23 @@
+change: simplify-database-tooling
+artifact_store: openspec
+phase: verification
+status: active
+artifacts:
+  proposal: true
+  specs: true
+  tasks: true
+  verify_report: true
+implementation_verification:
+  status: structural_pass
+  reason: Runtime commands were intentionally not run; structural readback confirmed the requested cleanup and documentation alignment.
+tasks_progress:
+  completed:
+    - 1.1
+    - 1.2
+    - 1.3
+    - 2.1
+    - 2.2
+    - 3.1
+    - 3.2
+  pending: []
+last_updated: 2026-08-29

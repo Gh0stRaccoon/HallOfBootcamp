@@ -6,9 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch server.js",
-    "validate:api": "node scripts/validate-api.js",
-    "test:clean": "node scripts/test-clean.js",
-    "test": "npm run test:clean"
+    "db:reset": "sequelize-cli db:drop --env development && sequelize-cli db:create --env development && sequelize-cli db:migrate --env development"
   },
   "keywords": [],
   "author": "",
