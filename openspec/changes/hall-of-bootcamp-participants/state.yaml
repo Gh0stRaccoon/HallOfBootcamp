@@ -1,0 +1,30 @@
+change: hall-of-bootcamp-participants
+artifact_store: openspec
+phase: verification
+status: active
+artifacts:
+  proposal: true
+  specs: true
+  design: true
+  tasks: true
+  verify_report: true
+migration:
+  legacy_sources:
+    - specs/hall-of-bootcamp-participants/spec.md
+    - plan.md
+  completed: true
+  verified_by: structural_readback
+implementation_verification:
+  status: pending
+  reason: Runtime tests were intentionally not run during the documentation migration.
+tasks_progress:
+  completed:
+    - 1.1
+    - 1.2
+    - 1.3
+    - 1.4
+    - 1.5
+  pending:
+    - 2.1
+    - 2.2
+last_updated: 2026-08-29

@@ -1,4 +1,5 @@
 schema: spec-driven
+artifact_store: openspec
 
 context: |
   Tech stack: Node.js + CommonJS + Express 5
