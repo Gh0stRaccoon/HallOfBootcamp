@@ -21,19 +21,11 @@ For every non-trivial change:
 - Never commit secrets; use environment variables for credentials and signing keys.
 - Prefer small, testable modules and explicit validation at API boundaries.
 
-## Branch naming convention
+## Contribution workflow
 
-Use the branch format defined in [BRANCHING.md](BRANCHING.md):
-
-```text
-<type>/HC-<issue-number>-<usuario>-<descripcion-corta>
-```
-
-Examples:
+[CONTRIBUTING.md](CONTRIBUTING.md) is the single source of truth for issues, forks,
+branches, commits, validation, and pull requests. Follow its branch convention:
 
 ```text
-feature/HC-12-juan-user-profile
-fix/HC-27-maria-linkedin-validation
-hotfix/HC-41-carlos-auth-token-expiration
+<type>/<issue-number>-<short-description>
 ```
-
