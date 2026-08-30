@@ -2,16 +2,20 @@
   "name": "hallofbootcamp",
   "version": "1.0.0",
   "description": "",
+  "keywords": [],
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch server.js",
-    "db:reset": "sequelize-cli db:drop --env development && sequelize-cli db:create --env development && sequelize-cli db:migrate --env development"
+    "db:reset": "sequelize-cli db:drop --env development && sequelize-cli db:create --env development && sequelize-cli db:migrate --env development",
+    "lint": "oxlint app.js server.js .sequelizerc src",
+    "lint:check": "oxlint --deny-warnings app.js server.js .sequelizerc src",
+    "fmt": "oxfmt --write app.js server.js .sequelizerc src package.json .oxlintrc.json .oxfmtrc.json",
+    "fmt:check": "oxfmt --check app.js server.js .sequelizerc src package.json .oxlintrc.json .oxfmtrc.json"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
     "bcryptjs": "^3.0.3",
     "cors": "^2.8.6",
@@ -23,6 +27,8 @@
     "sequelize": "^6.37.8"
   },
   "devDependencies": {
+    "oxfmt": "^0.65.0",
+    "oxlint": "^1.80.0",
     "sequelize-cli": "^6.6.5"
   }
 }

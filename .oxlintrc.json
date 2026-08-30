@@ -1,0 +1,28 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "env": {
+    "node": true
+  },
+  "plugins": [],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "error"
+  },
+  "rules": {
+    "no-console": "off",
+    "no-unused-vars": [
+      "error",
+      {
+        "caughtErrors": "none"
+      }
+    ],
+    "curly": ["error", "all"],
+    "eqeqeq": "error",
+    "no-throw-literal": "error",
+    "no-useless-catch": "error",
+    "require-await": "error",
+    "no-promise-executor-return": "error",
+    "no-process-exit": "error"
+  },
+  "ignorePatterns": ["node_modules/", "coverage/", ".atl/"]
+}

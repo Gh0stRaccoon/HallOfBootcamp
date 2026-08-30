@@ -7,7 +7,9 @@ function validateParticipant(req, res, next) {
 
   const validStatuses = ['active', 'inactive', 'graduated'];
   if (status && !validStatuses.includes(status)) {
-    return res.status(400).json({ message: 'status must be one of active, inactive, or graduated' });
+    return res
+      .status(400)
+      .json({ message: 'status must be one of active, inactive, or graduated' });
   }
 
   next();
