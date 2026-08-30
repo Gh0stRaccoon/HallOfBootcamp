@@ -1,5 +1,7 @@
 function isValidUrl(value) {
-  if (!value || typeof value !== 'string') return false;
+  if (!value || typeof value !== 'string') {
+    return false;
+  }
 
   try {
     const url = new URL(value);
@@ -10,7 +12,9 @@ function isValidUrl(value) {
 }
 
 function isValidSocialProfile(value) {
-  if (!value || value === '') return true;
+  if (!value || value === '') {
+    return true;
+  }
   return isValidUrl(value);
 }
 

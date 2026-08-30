@@ -206,11 +206,11 @@ module.exports = {
     );
 
     await queryInterface.sequelize.query(
-      "CREATE UNIQUE INDEX IF NOT EXISTS users_linked_in_url_idx ON users (linked_in_url) WHERE linked_in_url IS NOT NULL;"
+      'CREATE UNIQUE INDEX IF NOT EXISTS users_linked_in_url_idx ON users (linked_in_url) WHERE linked_in_url IS NOT NULL;'
     );
 
     await queryInterface.sequelize.query(
-      "CREATE UNIQUE INDEX IF NOT EXISTS users_github_url_idx ON users (github_url) WHERE github_url IS NOT NULL;"
+      'CREATE UNIQUE INDEX IF NOT EXISTS users_github_url_idx ON users (github_url) WHERE github_url IS NOT NULL;'
     );
 
     await queryInterface.sequelize.query(
